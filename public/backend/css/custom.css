@@ -1,0 +1,121 @@
+.passwordShow{
+position: absolute;
+right: 25px;
+transform: translate(0,-50%);
+cursor: pointer;
+margin-top: -20px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #4f8f4f!important;
+    border-color: #4f8f4f!important;
+}
+.btn-primary:hover{
+    color: #fff;
+    background-color: #4f8f4f!important;
+    border-color: #4f8f4f!important;
+}
+
+
+a {
+    color: #4f8f4f!important;
+}
+a:hover{
+    color: #dc3545!important;
+}
+.card-header{
+    border-radius: none!important;
+}
+.btn-custom{
+ border: 1px solid #4f8f4f;
+}
+.form-label {
+    font-size: 16px!important;
+}
+.removeBtn{
+    margin-top: 30px!important;
+}
+
+.bg-gradient-purple {
+background: linear-gradient(135deg, #6e2c91, #8e44ad);
+}
+
+.bg-gradient-success {
+background: linear-gradient(135deg, #28a745, #218838);
+}
+
+.bg-gradient-danger {
+background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+.bg-gradient-info {
+background: linear-gradient(135deg, #17a2b8, #138496);
+}
+.btn-danger:hover{
+    color: #fff!important;
+}
+.btn-default{
+    border: 1px solid #dc3545;
+    color: #dc3545!important;
+    background-color: #f7f8fa!important;
+}
+
+.pos{
+    padding: 10px;
+    color: #dc3545;
+}
+.pos i{
+   font-size: 20px;
+}
+
+
+.value-button {
+  display: inline-block;
+  border: 1px solid #ddd;
+  margin: 0px;
+  width: 40px;
+  height: 25px;
+  text-align: center;
+  vertical-align: middle;
+  background: #eee;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+ #decrease {
+  margin-right: -4px;
+  border-radius: 8px 0 0 8px;
+}
+
+ #increase {
+  margin-left: -4px;
+  border-radius: 0 8px 8px 0;
+}
+
+form #input-wrap {
+  margin: 0px;
+  padding: 0px;
+}
+
+.offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl{
+    width: 700px!important;
+}
+#galleryPreviews img{
+    height: 100px;
+    width: 30%;
+}
+
+.offcanvas-body {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding-right: 15px; 
+}
