@@ -21,4 +21,45 @@
       </div>
   </div>
 </main>
+
 @endsection
+@push('scripts')
+<script>
+$('#businessType, #searchInput, #businessStatus').on('change', function() {
+    $('#filterForm').submit();
+});
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('.business_status').change(function() {
+        var pageTypeId = $(this).data('status-id'); 
+        var pageType = $(this).val(); 
+
+        $.ajax({
+            url: '{{ route("business.status.type") }}',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                id: pageTypeId, 
+                business_status: pageType 
+            },
+            success: function(response) {
+                if (response.success) {
+                    toastr.success('Business status updated successfully!');
+                } else {
+                    toastr.error('Failed to update business status.');
+                }
+            },
+            error: function(xhr) {
+                console.error('Error: ' + xhr.statusText);
+                toastr.error('Error updating business status.');
+            }
+        });
+    });
+});
+</script>
+
+
+
+@endpush

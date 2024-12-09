@@ -9,9 +9,25 @@
     @method('PUT')
     <div class="offcanvas-body">
       <div class="row">
+
         <div class="mb-3 col-md-6">
-          <label for="business_name" class="form-label">Business Name<span class="text-danger">*</span></label>
-          <input type="text" name="business_name" class="form-control" placeholder="Business Name" value="{{ old('business_name', $data->business_name) }}">
+          <label for="business_type" class="form-label">Business Type <span class="text-danger">*</span></label>
+          <select name="business_type" id="business_type" class="form-control" required>
+            <option value="Transportation" {{ old('business_type', $data->business_type) == 'Transportation' ? 'selected' : '' }}>Transportation</option>
+            <option value="Health" {{ old('business_type', $data->business_type) == 'Health' ? 'selected' : '' }}>Health</option>
+            <option value="Organization" {{ old('business_type', $data->business_type) == 'Organization' ? 'selected' : '' }}>Organization</option>
+            <option value="Movers" {{ old('business_type', $data->business_type) == 'Movers' ? 'selected' : '' }}>Movers</option>
+            <option value="Ecommerce" {{ old('business_type', $data->business_type) == 'Ecommerce' ? 'selected' : '' }}>Ecommerce</option>
+            <option value="Cleaning" {{ old('business_type', $data->business_type) == 'Cleaning' ? 'selected' : '' }}>Cleaning</option>
+            <option value="Construction" {{ old('business_type', $data->business_type) == 'Construction' ? 'selected' : '' }}>Construction</option>
+            <option value="Plumbing" {{ old('business_type', $data->business_type) == 'Plumbing' ? 'selected' : '' }}>Plumbing</option>
+            <option value="Beauty Spa" {{ old('business_type', $data->business_type) == 'Beauty Spa' ? 'selected' : '' }}>Beauty & Spa</option>
+          </select>
+        </div>
+
+        <div class="mb-3 col-md-6">
+          <label for="business_name" class="form-label">Business Name <span class="text-danger">*</span></label>
+          <input type="text" name="business_name" class="form-control" placeholder="Business Name" value="{{ old('business_name', $data->business_name) }}" required>
         </div>
 
         <div class="mb-3 col-md-6">
@@ -26,17 +42,17 @@
 
         <div class="mb-3 col-md-6">
           <label for="owner_name" class="form-label">Owner Name <span class="text-danger">*</span></label>
-          <input type="text" name="owner_name" class="form-control" value="{{ old('owner_name', $data->owner_name) }}">
+          <input type="text" name="owner_name" class="form-control" value="{{ old('owner_name', $data->owner_name) }}" required>
         </div>
 
         <div class="mb-3 col-md-6">
-          <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
-          <input type="email" name="email" class="form-control" value="{{ old('email', $data->email) }}">
+          <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+          <input type="email" name="email" class="form-control" value="{{ old('email', $data->email) }}" required>
         </div>
 
         <div class="mb-3 col-md-6">
-          <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
-          <input type="tel" name="phone" class="form-control" value="{{ old('phone', $data->phone) }}">
+          <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
+          <input type="tel" name="phone" class="form-control" value="{{ old('phone', $data->phone) }}" required>
         </div>
 
         <div class="mb-3 col-md-6">
@@ -51,7 +67,7 @@
 
         <div class="mb-3 col-md-6">
           <label for="designing_cost" class="form-label">Designing Cost</label>
-          <input type="number" name="designing_cost"  class="form-control" step="0.01" value="{{ old('designing_cost', $data->designing_cost) }}">
+          <input type="number" name="designing_cost" class="form-control" step="0.01" value="{{ old('designing_cost', $data->designing_cost) }}">
         </div>
 
         <div class="mb-3 col-md-6">
@@ -71,7 +87,7 @@
 
         <div class="mb-3 col-md-6">
           <label for="expiration_date" class="form-label">Expiration Date</label>
-          <input type="month" name="expiration_date"  class="form-control" value="{{ old('expiration_date', $data->expiration_date) }}">
+          <input type="month" name="expiration_date" class="form-control" value="{{ old('expiration_date', $data->expiration_date) }}">
         </div>
 
         <div class="mb-3 col-md-6">
@@ -79,7 +95,7 @@
           <input type="text" name="security_code" class="form-control" value="{{ old('security_code', $data->security_code) }}">
         </div>
 
-        <div class="mb-3 col-md-12">
+        <div class="mb-3 col-md-6">
           <label for="billing_address" class="form-label">Billing Address</label>
           <input type="text" name="billing_address" class="form-control" value="{{ old('billing_address', $data->billing_address) }}">
         </div>
@@ -88,6 +104,7 @@
           <label for="details" class="form-label">Additional Details</label>
           <textarea class="form-control" name="details" placeholder="Additional Features" rows="3">{{ old('details', $data->details) }}</textarea>
         </div>
+
       </div>
     </div>
 

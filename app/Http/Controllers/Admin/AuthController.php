@@ -13,6 +13,11 @@ use App\Helpers\ImageHelper;
 class AuthController extends Controller
 {
     public function adminLoginForm(){
+
+        //  $password = 'changamart4645';
+        // $hashedPassword = Hash::make($password);
+        // dd($hashedPassword);die;
+
         if (Auth::check()) {
             return $this->redirectToDashboard(Auth::user()->role_id);
         }
@@ -79,7 +84,7 @@ class AuthController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $user->delete();
         $request->session()->flash('success', 'Your account has been deleted successfully');
-        return redirect()->route('admin.login.form');
+        return redirect()->route('users.login.form');
     }
 
     public function updateProfies(Request $request)

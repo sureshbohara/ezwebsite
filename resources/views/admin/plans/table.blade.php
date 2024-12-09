@@ -1,5 +1,6 @@
 <div class="col-12 col-lg-12">
   <div class="card border shadow-none w-100 h-100">
+    @include('admin.plans.search')
     <div class="card-body">
       <table class="table align-middle table-striped">
         <thead>

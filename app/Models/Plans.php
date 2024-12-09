@@ -39,8 +39,22 @@ class Plans extends Model
 
 
     public static function getRecords(){
-        return self::ordered()->paginate(15);
-    }
+        $query = Plans::query();
+         if (!empty(request('display_on'))) {
+            $query->where('display_on', 'LIKE', '%' . request('display_on') . '%');
+        }
+
+        if (!is_null(request('status')) && request('status') !== '') {
+         $status = request('status');
+        $query->where('status', '=', $status);
+        }
+
+        if (request()->filled('name')) {
+          $query->where('name', 'LIKE', '%' . request('name') . '%');
+        }
+
+       return $query->ordered()->paginate(15);
+       }
    
 
      public static function getTotalPlans(){

@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\PlansController;
 
 use App\Http\Controllers\Employeer\BusinessController;
 use App\Http\Controllers\Employeer\EmployeeDashboardController;
+use App\Http\Controllers\Employeer\AttendanceController;
+use App\Http\Controllers\Employeer\UserLeaveController;
 
 use App\Http\Controllers\Customer\CustomerDashboardController;
 
@@ -92,6 +94,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('package', PlansController::class);
     Route::post('status/package', [PlansController::class, 'packageStatus'])->name('status.package');
     Route::post('update/package', [PlansController::class, 'updateOrderLevel'])->name('package.orderlevel');
+    Route::match(['post','get'],'business/submit/{id}', [DashboardController::class,'businessDetails'])->name('business.details');
+     Route::match(['post','get'],'business/list', [DashboardController::class,'businessList'])->name('business.list');
+
     
 });
 
@@ -104,6 +109,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 Route::prefix('employee')->middleware(['auth', 'employee'])->group(function () {
     Route::get('/dashboard', [EmployeeDashboardController::class, 'dashboard'])->name('employee.dashboard');
     Route::resource('business', BusinessController::class);
+    Route::post('business/type/update', [BusinessController::class, 'updateBusinessStatusType'])->name('business.status.type');
+    Route::match(['post','get'],'comment/business/submit/{id}', [BusinessController::class,'businessCommentSubmit'])->name('comment.employee.submit');
+
+    Route::resource('attendance', AttendanceController::class);
+    Route::match(['get','post'],'users/attendance/', [AttendanceController::class,'userAtt'])->name('attendance.user');
+    Route::resource('leave', UserLeaveController::class);
+
 });
 
 

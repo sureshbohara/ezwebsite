@@ -23,7 +23,7 @@ class PlansController extends Controller
         $this->middleware('can:delete-package')->only('destroy');
     }
 
-    public function index(){
+    public function index(Request $request){
         $datas = Plans::getRecords();
         return view('admin.plans.index', compact('datas'));
     }

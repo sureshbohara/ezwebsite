@@ -6,7 +6,7 @@ use App\Http\Requests\BusinessRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log;
 use Auth;
-
+use App\Models\Comments;
 class BusinessRepository
 {
     // Get all businesses based on current user role and filters
@@ -23,7 +23,7 @@ class BusinessRepository
             // Creating a comment after business creation
             $business->comments()->create([
                 'businesses_id' => $business->id,
-                'name' => auth()->user()->name,
+                'user_id' => auth()->user()->id,
                 'comments' => 'Created New Business Information',
             ]);
 

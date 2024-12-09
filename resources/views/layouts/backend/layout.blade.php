@@ -209,6 +209,7 @@
   handleFormSubmit('#storeMenu', "{{ route('menu.store') }}");
   handleFormSubmit('#storePlans', "{{ route('package.store') }}");
   handleFormSubmit('#storeBusiness', "{{ route('business.store') }}");
+  handleFormSubmit('#storeLeave', "{{ route('leave.store') }}");
 
 </script>
 

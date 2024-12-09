@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Auth;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -25,6 +25,14 @@ class User extends Authenticatable
         ->where('role_id', $role_id)
         ->count();
    }
+
+    public static function getUserInfo(){
+    $userID = Auth::id();
+    $roleId = Auth::user()->role_id; 
+    return compact('userID', 'roleId');
+    }
+
+
 
     public function role(){
         return $this->belongsTo(Role::class, 'role_id');

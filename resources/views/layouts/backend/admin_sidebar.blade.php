@@ -78,7 +78,14 @@
 
 
 
-
+<li>
+  <a href="{{route('business.list')}}">
+    <div class="parent-icon">
+      <i class="bi bi-building"></i>
+    </div>
+    <div class="menu-title">Manage Business</div>
+  </a>
+</li>
 
 
 <li>

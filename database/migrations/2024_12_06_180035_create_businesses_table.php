@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
+            $table->string('business_type');
             $table->string('business_name');
-            $table->string('website')->unique();
-            $table->string('domain_request')->nullable();
             $table->string('owner_name');
             $table->string('email');
             $table->string('phone');
-            $table->string('s_date')->nullable();
-            $table->string('e_date')->nullable();
+            $table->string('website')->nullable();
+            $table->string('domain_request')->nullable();
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
             $table->string('designing_cost')->nullable();
             $table->string('hosting_cost')->nullable();
             $table->string('details')->nullable();
@@ -29,15 +30,15 @@ return new class extends Migration
             $table->string('expiration_date')->nullable();
             $table->string('security_code')->nullable();
             $table->string('billing_address')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('business_status')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
 
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-             $table->foreignId('businesses_id')->constrained()->onDelete('cascade');
-            $table->string('name');
+            $table->foreignId('businesses_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->longText('comments');
             $table->timestamps();
         });

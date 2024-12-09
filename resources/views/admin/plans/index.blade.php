@@ -115,7 +115,11 @@
 
 
 
-
+<script>
+$('#displayOnSelect, #searchInput, #statusSelect').on('change', function() {
+    $('#filterForm').submit();
+});
+</script>
 
 
 @endpush

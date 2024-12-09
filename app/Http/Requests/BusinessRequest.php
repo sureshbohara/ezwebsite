@@ -18,14 +18,16 @@ class BusinessRequest extends FormRequest
     {
         return [
             'user_id'  => 'nullable',
+            'business_type' => 'required|string|max:255',
             'business_name' => 'required|string|max:255',
-            'website' => 'required',
-            'domain_request' => 'nullable|string',
             'owner_name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            's_date' => 'nullable|date',
-            'e_date' => 'nullable|date',
+            
+            'website' => 'nullable',
+            'domain_request' => 'nullable|string',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date',
             'designing_cost' => 'nullable|numeric',
             'hosting_cost' => 'nullable|numeric',
             'details' => 'nullable|string',

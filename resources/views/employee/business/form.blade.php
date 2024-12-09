@@ -8,6 +8,22 @@
     <div class="offcanvas-body">
       <div class="row">
 
+
+        <div class="mb-3 col-md-6">
+          <label for="business_type" class="form-label">Business Type<span class="text-danger">*</span></label>
+          <select name="business_type" id="business_type" class="form-control" required>
+            <option value="Transportation">Transportation</option>
+            <option value="Health">Health</option>
+            <option value="Organization">Organization</option>
+            <option value="Movers">Movers</option>
+            <option value="Ecommerce">Ecommerce</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Construction">Construction</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="Beauty Spa">Beauty & Spa</option>
+          </select>
+        </div>
+
         <div class="mb-3 col-md-6">
           <label for="business_name" class="form-label">Business Name<span class="text-danger">*</span></label>
           <input type="text" name="business_name" id="business_name" class="form-control" placeholder="Business Name">
@@ -78,7 +94,7 @@
           <input type="text" name="security_code" id="security_code" class="form-control">
         </div>
 
-        <div class="mb-3 col-md-12">
+        <div class="mb-3 col-md-6">
           <label for="billing_address" class="form-label">Billing Address</label>
           <input type="text" name="billing_address" id="billing_address" class="form-control">
         </div>

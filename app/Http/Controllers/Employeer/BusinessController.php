@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\BusinessRepository;
 use App\Http\Requests\BusinessRequest;
 use App\Models\Business;
-
+use App\Models\Comments;
 class BusinessController extends Controller
 {
     protected $repository;
@@ -39,6 +39,17 @@ class BusinessController extends Controller
         return view('employee.business.edit', $data);
     }
 
+     public function show($id){
+        $data['business'] = $this->repository->find($id);
+        return view('employee.business.details', $data);
+    }
+
+
+  
+
+    
+
+
     public function update(BusinessRequest $request, $id){
         try {
             $business = $this->repository->update($request, $id);
@@ -56,6 +67,31 @@ class BusinessController extends Controller
             return back()->with('error', 'Failed to delete data.');
         }
     }
+
+    
+    public function updateBusinessStatusType(Request $request){
+    $validated = $request->validate([
+        'id' => 'required|integer',
+        'business_status' => 'nullable', 
+    ]);
+    $businessStatusType = Business::findOrFail($validated['id']);
+    $businessStatusType->business_status = $validated['business_status'] ?? $businessStatusType->business_status;
+    $businessStatusType->save();
+    return response()->json(['success' => true]);
+ }
+
+
+   public function businessCommentSubmit(Request $request){
+    $request->validate([
+        'businesses_id' => 'required|integer',
+        'name' => 'required|string',
+        'comments' => 'required|string',
+    ]);
+    Comments::create($request->all());
+    return back()->with('success', 'Comment Created Successfully.');
+}
+
+
 
     
 }
