@@ -20,21 +20,7 @@ class AttendanceController extends Controller
         }
 
 
-    public function store(Request $request){
-        $check_attendance = Attendance::CheckAlreadyAttendance($request->user_id, $request->attendance_date);
-        if (!empty($check_attendance)) {
-            $check_attendance->attendance_type = $request->attendance_type;
-            $check_attendance->save();
-        } else {
-            $attendance = new Attendance;
-            $attendance->user_id = $request->user_id;
-            $attendance->attendance_date = $request->attendance_date;
-            $attendance->attendance_type = $request->attendance_type;
-            $attendance->created_by = Auth::user()->id;
-            $attendance->save();
-        }
-        return response()->json(['msg' => 'Attendance created or updated successfully']);
-    }
+   
 
 
    public function userAtt(Request $request) {

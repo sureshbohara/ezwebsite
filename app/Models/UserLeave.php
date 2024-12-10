@@ -20,7 +20,7 @@ class UserLeave extends Model
 
      public static function getRecords(){
       $query = static::with(['user', 'purpose']);
-      if (auth()->user()->role_id == 3 || auth()->user()->role_id == 4) {
+      if (auth()->user()->role_id == 2 || auth()->user()->role_id == 3) {
          $query->where('user_id', auth()->id());
      }
      return $query->orderByDesc('id')->paginate(20);

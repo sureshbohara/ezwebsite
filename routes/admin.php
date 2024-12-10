@@ -95,7 +95,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('status/package', [PlansController::class, 'packageStatus'])->name('status.package');
     Route::post('update/package', [PlansController::class, 'updateOrderLevel'])->name('package.orderlevel');
     Route::match(['post','get'],'business/submit/{id}', [DashboardController::class,'businessDetails'])->name('business.details');
-     Route::match(['post','get'],'business/list', [DashboardController::class,'businessList'])->name('business.list');
+    Route::match(['post','get'],'business/list', [DashboardController::class,'businessList'])->name('business.list');
+    Route::match(['get','post'],'reports/attendance', [DashboardController::class,'attendanceReports'])->name('reports.attendance');
+    Route::match(['get','post'],'reports/leave', [DashboardController::class,'leaveReports'])->name('reports.leave');
 
     
 });

@@ -37,58 +37,37 @@ class Attendance extends Model
             ->first();
     }
 
-    public static function getRecord($filters){
+    public static function getRecord($filters) {
         $userInfo = self::getUserInfo();
         $roleId = $userInfo['roleId'];
         $userID = $userInfo['userID'];
-
         $query = Attendance::select(
             'attendances.*',
             'users.name as user_names',
             'created_by.name as created_name'
         )
-            ->join('users', 'users.id', '=', 'attendances.user_id')
-            ->leftJoin('users as created_by', 'created_by.id', '=', 'attendances.created_by')
-            ->where('attendances.user_id', $filters['user_id'])
-            ->when($filters['attendance_date'], function ($query, $attendance_date) {
-                return $query->where('attendances.attendance_date', $attendance_date);
-            })
-            ->when($filters['attendance_type'], function ($query, $attendance_type) {
-                return $query->where('attendances.attendance_type', $attendance_type);
-            })
-            ->orderBy('attendances.id', 'desc')
-            ->paginate(20);
-
-        $query->where('user_id', $userID);
-        return $query;
-       }
-
-    public static function getRecordReport($filters){
-    $userInfo = self::getUserInfo();
-    $roleId = $userInfo['roleId'];
-    $userID = $userInfo['userID'];
-    $query = Attendance::select(
-        'attendances.*',
-        'users.name as user_names',
-        'created_by.name as created_name'
-    )
         ->join('users', 'users.id', '=', 'attendances.user_id')
         ->leftJoin('users as created_by', 'created_by.id', '=', 'attendances.created_by')
-        ->when($filters['attendance_date'], function ($query, $attendance_date) {
-            return $query->where('attendances.attendance_date', $attendance_date);
+        ->when($filters['user_id'], function ($query, $user_id) {
+            return $query->where('attendances.user_id', $user_id);
         })
-        ->when($filters['attendance_type'], function ($query, $attendance_type) {
-            return $query->where('attendances.attendance_type', $attendance_type);
+        ->when($filters['start_date'], function ($query, $start_date) {
+            return $query->whereDate('attendances.attendance_date', '>=', $start_date);
+        })
+        ->when($filters['end_date'], function ($query, $end_date) {
+            return $query->whereDate('attendances.attendance_date', '<=', $end_date);
         })
         ->orderBy('attendances.id', 'desc');
 
-    if ($roleId != 1) {
-        $query->where('user_id', $userID);
+        // If the role is not admin (roleId !== 1), limit records to the current user
+        if ($roleId !== 1) {
+            $query->where('attendances.user_id', $userID);  // Restrict data to the user
+        }
+
+        return $query->paginate(30);  // Paginate the results, 20 per page
     }
 
-    return $query->paginate(20);
-}
-
+  
 
  
     

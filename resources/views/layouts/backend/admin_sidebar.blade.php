@@ -88,6 +88,9 @@
 </li>
 
 
+
+
+
 <li>
   <a href="{{route('subscribers.index')}}">
     <div class="parent-icon"><i class="bi bi-envelope"></i>
@@ -95,6 +98,34 @@
     <div class="menu-title">User Subscribers</div>
   </a>
 </li>
+
+
+
+<li>
+  <a href="javascript:;" class="has-arrow">
+    <div class="parent-icon"><i class="bi bi-card-checklist"></i>
+    </div>
+    <div class="menu-title">Manage Reports</div>
+  </a>
+  <ul>
+
+    <li> 
+      <a href="{{route('reports.attendance')}}">
+        <i class="bi bi-arrow-right-short"></i>
+        Attendance Reports
+      </a>
+    </li>
+
+    <li>
+     <a href="{{route('reports.leave')}}">
+      <i class="bi bi-arrow-right-short"></i>
+      Leave Reports
+    </a>
+  </li>
+
+</ul>
+</li>
+
 
 
 <li>

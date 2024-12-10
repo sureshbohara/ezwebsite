@@ -119,14 +119,15 @@ $todayCommentsCount = $todayComments->count();
 
             <div class="header-message-list p-2">
               @foreach($todayComments as $comment)
-                <a class="dropdown-item" href="{{ Auth::user()->role_id == 1 ? route('business.details', $comment['id']) : route('business.show', $comment['id']) }}">
+                <a class="dropdown-item" href="#"  style="border:1px solid;margin-bottom: 3px;">
                   <div class="d-flex align-items-center">
-                    <img src="{{ asset('noimage.png') }}" alt="Image" class="rounded-circle" width="52" height="52">
                     <div class="ms-3 flex-grow-1">
-                      <h6 class="mb-0 dropdown-msg-user">{{ $comment->name }}
-                        <span class="msg-time float-end text-secondary">{{ $comment->created_at->diffForHumans() }}</span>
+                        <h6 class="mb-0 dropdown-msg-user"><i class="bi bi-building"></i>  {{ $comment->businesses->owner_name }} 
+                         <span class="float-end"> <i class="bi bi-person-circle"></i> {{ $comment->user->name }}</span>
                       </h6>
-                      <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">{{ $comment->comments }}</small>
+                      <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Remarks: {{ $comment->comments }} <br> 
+                         Time : {{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}
+                      </small>
                     </div>
                   </div>
                 </a>
@@ -135,7 +136,7 @@ $todayCommentsCount = $todayComments->count();
 
             <div class="p-2">
               <hr class="dropdown-divider">
-              <a class="dropdown-item" href="{{ route('business.index') }}">
+              <a class="dropdown-item" href="{{ Auth::user()->role_id == 1 ? route('business.list') : route('business.index') }}">
                 <div class="text-center">View All Notifications</div>
               </a>
             </div>

@@ -9,6 +9,7 @@ class Comments extends Model
 {
     use HasFactory;
     protected $fillable = ['businesses_id', 'user_id', 'comments'];
+    
     public function businesses(){
       return $this->belongsTo(Business::class);
     }
@@ -17,6 +18,8 @@ class Comments extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+  
 
     public static function getUserInfo(){
         $user = Auth::user();

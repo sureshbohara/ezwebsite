@@ -72,11 +72,17 @@ class AuthController extends Controller
     }
 
     public function adminLogout(Request $request){
-    Auth::logout();
-    $request->session()->flush();
-    $request->session()->flash('success', 'You have been logged out');
-    return redirect()->route('users.login.form');
+      $user = Auth::user();
+       if ($user) {
+         $user->last_login_at = null;
+         $user->save();
+      }
+      Auth::logout();
+      $request->session()->flush();
+      $request->session()->flash('success', 'You have been logged out');
+     return redirect()->route('users.login.form');
    }
+
 
 
     public function accountDelete(Request $request)

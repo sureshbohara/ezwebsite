@@ -8,7 +8,7 @@ class GalleryRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;  // Update this based on actual authorization logic
+        return true; 
     }
 
     public function rules(): array

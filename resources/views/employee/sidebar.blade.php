@@ -8,7 +8,7 @@
 </li>
 
 <li>
-  <a href="{{route('attendance.index')}}">
+  <a href="{{route('attendance.user')}}">
     <div class="parent-icon">
       <i class="bi bi-clock"></i> 
     </div>

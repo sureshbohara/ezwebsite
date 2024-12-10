@@ -84,7 +84,7 @@ class BusinessController extends Controller
    public function businessCommentSubmit(Request $request){
     $request->validate([
         'businesses_id' => 'required|integer',
-        'name' => 'required|string',
+        'user_id' => 'required|integer',
         'comments' => 'required|string',
     ]);
     Comments::create($request->all());

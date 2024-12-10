@@ -8,7 +8,7 @@
     <div class="offcanvas-body">
       <div class="row">
         <input type="hidden" name="businesses_id" value="{{$data['id']}}">
-        <input type="hidden" name="name" class="form-control" value="{{ Auth::user()->name }}">
+        <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
         <div class="mb-3 col-md-12">
           <label for="details" class="form-label">Remarks/Comments</label>
           <textarea class="form-control" name="comments" placeholder="Add Comment" rows="6"></textarea>

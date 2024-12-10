@@ -115,7 +115,7 @@
                     <li class="list-group-item">
                       <strong>{{ $comment->user->name }}:</strong> {{ $comment->comment }}
                       <br>
-                      <small class="text-muted">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d, Y h:i A') }}</small>
+                      <small class="text-muted">{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
                     </li>
                   @endforeach
                 </ul>
