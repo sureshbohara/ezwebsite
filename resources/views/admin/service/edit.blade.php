@@ -35,8 +35,8 @@
 
                 <!-- Service Sub Title -->
                 <div class="col-12">
-                  <label class="form-label" for="service_sub_title">Home Page Text</label>
-                  <input type="text" name="service_sub_title" class="form-control" placeholder="Service Sub Title" value="{{ $data['service_sub_title'] }}">
+                  <label class="form-label" for="service_sub_title">Font Icon</label>
+                  <input type="text" name="service_sub_title" class="form-control" placeholder="Font Icon:fa-gear" value="{{ $data['service_sub_title'] }}">
                 </div>
 
                 <!-- Service Description -->
@@ -113,10 +113,10 @@
 
                   <!-- Display On -->
                   <div class="col-12">
-                    <label class="form-label" for="display_on">Services Type <span class="text-danger">*</span></label>
+                    <label class="form-label" for="display_on">Post Type <span class="text-danger">*</span></label>
                     <select name="display_on" class="form-control">
-                      <option value="Delivery" {{ $data['display_on'] == 'Delivery' ? 'selected' : '' }}>Delivery Services</option>
-                      <option value="Transport" {{ $data['display_on'] == 'Transport' ? 'selected' : '' }}>Transport Services</option>
+                      <option value="SERVICES" {{ $data['display_on'] == 'SERVICES' ? 'selected' : '' }}>SERVICES</option>
+                      <option value="PROCESS" {{ $data['display_on'] == 'PROCESS' ? 'selected' : '' }}>PROCESS</option>
                     </select>
                   </div>
 

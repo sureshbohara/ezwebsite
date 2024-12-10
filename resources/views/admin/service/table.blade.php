@@ -17,7 +17,14 @@
           <tbody>
             @foreach($datas as $key => $data)
             <tr>
-              <td>{{$data['display_on']}}</td>
+
+              <td>
+                  <select class="form-control serviceType" name="display_on" data-type-id="{{$data['id']}}">
+                  <option value="SERVICES" {{ $data->display_on == 'SERVICES' ? 'selected' : '' }}> SERVICES</option>
+                  <option value="PROCESS" {{ $data->display_on == 'PROCESS' ? 'selected' : '' }}>PROCESS</option>
+                </select>
+              </td>
+
               <td><img src="{{$data['imageUrl']}}" alt="{{$data['service_title']}}" style="width: 50px;"></td>
               <td>{{$data['service_title']}}</td>
               <td><input type="text" name="slug" value="{{$data['slug']}}" data-id="{{$data['id']}}" class="slug-input form-control"></td>

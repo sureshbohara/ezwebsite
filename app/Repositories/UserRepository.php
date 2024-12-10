@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Log;
 use App\Helpers\ImageHelper;
 use Exception;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\AdminRequest;
-class AdminRepository
+use App\Http\Requests\UserRequest;
+class UserRepository
 {
     protected $imageHelper;
 
@@ -16,7 +16,7 @@ class AdminRepository
         $this->imageHelper = $imageHelper;
     }
 
-    public function store(AdminRequest $request){
+    public function store(UserRequest $request){
         try {
             $data = $request->validated();
             $data['password'] = Hash::make($data['password']);
@@ -28,7 +28,7 @@ class AdminRepository
         }
     }
 
-    public function update(User $user, AdminRequest $request){
+    public function update(User $user, UserRequest $request){
         try {
             $data = $request->validated();
             $this->handleImageUpdate($request, $data, $user);
@@ -59,13 +59,13 @@ class AdminRepository
         }
     }
 
-    private function handleImageUpload(AdminRequest $request, array &$data){
+    private function handleImageUpload(UserRequest $request, array &$data){
         if ($request->hasFile('image')) {
             $data['image'] = $this->imageHelper->handleUploadedImage($request->file('image'), 'images');
         }
     }
 
-    private function handleImageUpdate(AdminRequest $request, array &$data, User $user){
+    private function handleImageUpdate(UserRequest $request, array &$data, User $user){
         if ($request->hasFile('image')) {
             $this->imageHelper->handleDeletedImage($user, 'image', 'images/');
             $data['image'] = $this->imageHelper->handleUploadedImage($request->file('image'), 'images');

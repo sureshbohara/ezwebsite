@@ -54,6 +54,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('status/service', [ServiceController::class, 'serviceStatus'])->name('status.service');
     Route::post('service/update', [ServiceController::class, 'updateOrderLevel'])->name('service.orderlevel');
     Route::post('service/update/slug', [ServiceController::class, 'updateSlugs'])->name('service.slug.update');
+    Route::post('service/type', [ServiceController::class, 'updateType'])->name('service.type');
 
     // Review Routes
     Route::resource('review', ReviewController::class);

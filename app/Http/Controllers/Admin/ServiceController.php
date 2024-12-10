@@ -105,5 +105,17 @@ class ServiceController extends Controller
         return response()->json(['success' => true]);
     }
 
+
+    public function updateType(Request $request){
+    $validated = $request->validate([
+        'id' => 'required|integer',
+        'display_on' => 'nullable|string', 
+    ]);
+    $serviceType = Service::findOrFail($validated['id']);
+    $serviceType->display_on = $validated['display_on'] ?? $serviceType->display_on;
+    $serviceType->save();
+    return response()->json(['success' => true]);
+ }
+
     
 }

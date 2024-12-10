@@ -6,7 +6,7 @@
     </div>
     <div>
       <!-- System Name -->
-      <h4 class="logo-text">{{ $setting->system_name }}</h4>
+      <h4 class="logo-text">EZ WEB SOL</h4>
     </div>
     <div class="toggle-icon ms-auto">
       <i class="bi bi-chevron-double-left"></i>

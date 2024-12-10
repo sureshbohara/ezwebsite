@@ -33,8 +33,8 @@
 
                 <!-- Service Sub Title -->
                 <div class="col-12">
-                  <label class="form-label" for="service_sub_title">Home Page Text</label>
-                  <input type="text" name="service_sub_title" id="service_sub_title" class="form-control" placeholder="Service Sub Title">
+                  <label class="form-label" for="service_sub_title">Service Icon</label>
+                  <input type="text" name="service_sub_title" class="form-control" placeholder="Font Icon:fa-gear">
                 </div>
 
                 <!-- Service Description -->
@@ -83,10 +83,10 @@
 
                   <!-- Display On -->
                   <div class="col-12">
-                    <label class="form-label" for="display_on">Services Type <span class="text-danger">*</span></label>
+                    <label class="form-label" for="display_on">Post Type <span class="text-danger">*</span></label>
                     <select name="display_on" id="display_on" class="form-control">
-                      <option value="Delivery">Delivery Services</option>
-                      <option value="Transport">Transport Services</option>
+                      <option value="SERVICES">SERVICES</option>
+                      <option value="PROCESS">PROCESS</option>
                     </select>
                   </div>
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\AdminRepository;
-use App\Http\Requests\AdminRequest;
+use App\Repositories\UserRepository;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     protected $repository;
 
-    public function __construct(AdminRepository $repository){
+    public function __construct(UserRepository $repository){
         $this->repository = $repository;
         $this->middleware('admin');
     }
@@ -25,7 +25,7 @@ class AdminController extends Controller
         return view('admin.users.index', $data);
     }
 
-    public function store(AdminRequest $request){
+    public function store(UserRequest $request){
         $this->authorize('add-user');
         try {
             $admin = $this->repository->store($request);
@@ -36,7 +36,7 @@ class AdminController extends Controller
         }
     }
 
-    public function update(AdminRequest $request, $id){
+    public function update(UserRequest $request, $id){
         $this->authorize('edit-user');
         try {
             $admin = $this->repository->find($id);

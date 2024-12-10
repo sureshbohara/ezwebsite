@@ -18,10 +18,10 @@ class GalleryController extends Controller
     {
         $this->repository = $repository;
         $this->middleware('admin');
-        $this->middleware('can:view-gallery ')->only('index');
-        $this->middleware('can:add-gallery ')->only(['create', 'store']);
-        $this->middleware('can:edit-gallery ')->only(['edit', 'update', 'galleryStatus']);
-        $this->middleware('can:delete-gallery ')->only('destroy');
+        // $this->middleware('can:view-gallery ')->only('index');
+        // $this->middleware('can:add-gallery ')->only(['create', 'store']);
+        // $this->middleware('can:edit-gallery ')->only(['edit', 'update', 'galleryStatus']);
+        // $this->middleware('can:delete-gallery ')->only('destroy');
     }
 
     public function index() {

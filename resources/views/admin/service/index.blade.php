@@ -119,4 +119,36 @@
 </script>
 
 
+<script>
+$(document).ready(function() {
+    $('.serviceType').change(function() {
+        var paheTypeId = $(this).data('type-id');
+        var serviceType = $(this).val(); 
+        $.ajax({
+            url: '{{ route("service.type") }}',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                id: paheTypeId,
+                display_on: serviceType
+            },
+            success: function(response) {
+                if (response.success) {
+                    toastr.success('Display On updated successfully!');
+                } else {
+                    toastr.error('Failed to update Display On.');
+                }
+            },
+            error: function(xhr) {
+                console.error('Error: ' + xhr.statusText);
+                toastr.error('Error updating Display On.');
+            }
+        });
+    });
+});
+
+</script>
+
+
+
 @endpush
